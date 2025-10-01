@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PARA SONIA 💖</title>
+  <style>
+    body{
+      margin:0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(270deg,#0b1020,#1a1d3a,#241c52);
+      background-size: 600% 600%;
+      animation: fondo 20s ease infinite;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      overflow:hidden;
+      color:#fff;
+    }
+    @keyframes fondo {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .card{
+      position:relative;
+      text-align:center;
+      padding:40px 30px;
+      border-radius:25px;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(8px);
+      box-shadow:0 15px 50px rgba(0,0,0,0.6);
+      max-width:750px;
+      z-index:1;
+      transition: transform .4s ease;
+    }
+    .card:hover{
+      transform: scale(1.02);
+    }
+    h1{
+      font-size:26px;
+      letter-spacing:3px;
+      margin-bottom:20px;
+      color:#ff9bb3;
+      text-shadow:0 0 15px #ff4d6d;
+    }
+    .mensaje{
+      font-size:18px;
+      font-weight:700;
+      line-height:1.6;
+      text-transform:uppercase;
+      color:#fff;
+    }
+    .heart{
+      margin:20px auto;
+      width:140px;height:140px;
+      animation:latido 1.3s infinite;
+      filter: drop-shadow(0 0 20px #ff4d6d);
+    }
+    @keyframes latido {
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.2)}
+    }
+    /* pétalos */
+    .petal{
+      position:absolute;
+      width:12px;height:18px;
+      background: radial-gradient(circle at 30% 30%, #fff, #ff4d6d);
+      border-radius:50% 50% 40% 40%;
+      opacity:0.9;
+      animation: caer 10s linear infinite;
+      z-index:0;
+    }
+    @keyframes caer {
+      0%{transform:translateY(-10vh) rotate(0deg);opacity:0}
+      10%{opacity:1}
+      100%{transform:translateY(120vh) rotate(720deg);opacity:0}
+    }
+    /* Botón */
+    .btn{
+      margin-top:25px;
+      padding:14px 30px;
+      border:none;
+      border-radius:30px;
+      font-size:17px;
+      font-weight:bold;
+      cursor:pointer;
+      color:#fff;
+      background:linear-gradient(90deg,#ff4d6d,#ff9bb3);
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);
+      transition:all 0.3s ease;
+    }
+    .btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 25px #ff4d6d;
+    }
+    /* Sorpresa oculta */
+    .sorpresa{
+      display:none;
+      margin-top:25px;
+      font-size:18px;
+      font-weight:bold;
+      line-height:1.7;
+      color:#ffd0dc;
+      text-transform:uppercase;
+      padding:20px;
+      border-radius:15px;
+      background: rgba(255,255,255,0.08);
+      box-shadow:0 0 20px rgba(255,100,150,0.6);
+      animation: aparecer 1.2s ease forwards;
+    }
+    @keyframes aparecer {
+      from{opacity:0;transform:translateY(40px) scale(0.9)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+    /* explosión de flores */
+    .flor {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle,#ff9bb3 40%,transparent 60%);
+      border-radius:50%;
+      pointer-events:none;
+      animation: explotar 1s ease-out forwards;
+    }
+    @keyframes explotar {
+      from{transform:scale(0);opacity:1}
+      to{transform:scale(3);opacity:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>PARA MI AMADA SONIA 💌</h1>
+    <div class="heart">
+      <svg viewBox="0 0 512 512" fill="#ff4d6d" xmlns="http://www.w3.org/2000/svg">
+        <path d="M256 464s-170-98-200-150C20 242 95 160 160 160c34 0 48 24 96 64 48-40 62-64 96-64 65 0 140 82 104 154-30 52-200 150-200 150z"/>
+      </svg>
+    </div>
+    <p class="mensaje">
+      SONIA, ERES EL SUEÑO MÁS HERMOSO QUE LA VIDA ME REGALÓ.  
+      CADA LATIDO DE MI CORAZÓN PRONUNCIA TU NOMBRE,  
+      Y CADA DÍA CONTIGO ES EL MÁS BELLO DE TODOS.  
+      TE AMO PROFUNDAMENTE Y POR SIEMPRE. 💖✨
+    </p>
+    
+    <button class="btn" onclick="mostrarSorpresa(event)">HAZ CLIC AQUÍ, MI AMOR 💕</button>
+    
+    <div id="sorpresa" class="sorpresa">
+      SONIA, QUIERO QUE SEPAS QUE ERES MI UNIVERSO,  
+      LA LUZ QUE ILUMINA MIS NOCHES,  
+      LA MELODÍA QUE SUENA EN MI ALMA  
+      Y EL FUTURO QUE SUEÑO A TU LADO. 🌹✨  
+      NO EXISTEN PALABRAS SUFICIENTES PARA DECIRTE CUÁNTO TE AMO. 💖
+    </div>
+  </div>
+
+  <script>
+    // pétalos animados
+    const colors = ['#ff4d6d','#ff9bb3','#ffd0dc','#ffffff'];
+    for(let i=0;i<40;i++){
+      const p=document.createElement('div');
+      p.className='petal';
+      p.style.left=Math.random()*100+'%';
+      p.style.animationDuration=(7+Math.random()*6)+'s';
+      p.style.animationDelay=(Math.random()*5)+'s';
+      p.style.background=`radial-gradient(circle at 30% 30%, #fff, ${colors[Math.floor(Math.random()*colors.length)]})`;
+      p.style.width=(10+Math.random()*12)+'px';
+      p.style.height=(14+Math.random()*14)+'px';
+      document.body.appendChild(p);
+    }
+
+    // Mostrar sorpresa + explosión
+    function mostrarSorpresa(e){
+      document.getElementById("sorpresa").style.display="block";
+      
+      // Explosión de flores
+      for(let i=0;i<20;i++){
+        let flor=document.createElement("div");
+        flor.className="flor";
+        document.body.appendChild(flor);
+        flor.style.left=(e.clientX)+"px";
+        flor.style.top=(e.clientY)+"px";
+        flor.style.transform=`translate(${(Math.random()-0.5)*300}px, ${(Math.random()-0.5)*300}px)`;
+        setTimeout(()=>flor.remove(),1000);
+      }
+    }
+  </script>
+</body>
+</html>
